@@ -1,5 +1,5 @@
 """
-    Provides an island model example.
+Provides an island model example.
 """
 import math
 import os
@@ -7,6 +7,8 @@ import sys
 
 from matplotlib import pyplot as plt
 import networkx as nx
+
+import argparse
 
 from leap_ec import Individual, Representation, context, test_env_var
 from leap_ec import ops, probe
@@ -60,14 +62,65 @@ def viz_plots(problems, modulo):
     return genotype_probes, fitness_probes
 
 
+def graph_drawer(topology):
+    """
+    Function for creating different graphs.
+    """
+    ...
+
 ##############################
 # Entry point
 ##############################
 if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description="This is a script designed for running Multipopulation Evolutionary Algorythms. ")
+
+    parser.add_argument("-ps", "--population-size", type=int, default=15,\
+        help="defines population size.")
+    parser.add_argument("--selection",type=str, default="tournament", \
+        help="defines selection type. Possible options: tournament,natural,roulette,sus")
+    parser.add_argument("--crossover", type=str, default="uniform",\
+        help="uniform,multi_point,blend_alpha")
+    parser.add_argument("--crossover-points", type=int, default=1,\
+        help="")
+    parser.add_argument("--mutation", type=str, default="shift_gaussian",\
+        help="Possible options: shift_gaussian,replace_uniform")
+    parser.add_argument("--populations", type=int, default=100,\
+        help="")
+    parser.add_argument("--interval", type=int, default=10,\
+        help="")
+    parser.add_argument("--topology", type=str, default="fully_connected",\
+        help="Possible options: fully_connected,ring,mesh2d,mesh3d,star")
+    parser.add_argument("--emigration-selection", type=str, default="tournament",\
+        help="Possible options: tournament,natural,roulette,sus")
+    parser.add_argument("--immigration-selection", type=str, default="tournament",\
+        help="Possible options: tournament,natural,roulette,sus")
+    
+    args = parser.parse_args()
+
+    print("Args:", args)
+
+    # TOPOLOGY SELECTION:
     # Set up up the network of connections between islands
-    topology = nx.complete_graph(3)
+    topology = nx.complete_graph(4)
+    if args.topology == "star":
+        topology = nx.star_graph(5) #has to be an odd number
+    if args.topology == "ring":
+        topology = nx.cycle_graph(6)  # has to be an even number
+    if args.topology == "mesh2d":
+        n = 9  # 9 nodes, has to be an odd number
+        m = 20  # 20 edges
+        topology = nx.gnm_random_graph(n, m, seed=42)
+    if args.topology == "mesh3d":  # TODO
+        n = 9
+        m = 20
+        topology = nx.gnm_random_graph(n, m, seed=42)
+        # pos = nx.spring_layout(topology, dim=3) 
+    
     nx.draw(topology)
-    problem = SchwefelProblem(maximize=False)
+
+    # DEFINE THE PROBLEM HERE:
+    problem = ShekelProblem(maximize=False)
 
     genotype_probes, fitness_probes = viz_plots(
         [problem] * topology.number_of_nodes(), modulo=10)
@@ -84,10 +137,9 @@ if __name__ == '__main__':
         generations = 2
     else:
         generations = 1000
-
     
     l = 2
-    pop_size = 10
+    pop_size = args.population_size
     ea = multi_population_ea(max_generations=generations,
                              num_populations=topology.number_of_nodes(),
                              pop_size=pop_size,
@@ -116,7 +168,7 @@ if __name__ == '__main__':
                                              migration_gap=50),
                                  probe.FitnessStatsCSVProbe(stream=sys.stdout,
                                         extra_metrics={ 'island': get_island(context) })
-                             ],
-                             subpop_pipelines=subpop_probes)
+                            ],
+                            subpop_pipelines=subpop_probes)
 
     list(ea)
