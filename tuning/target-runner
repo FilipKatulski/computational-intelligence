@@ -37,7 +37,8 @@ CONFIG_PARAMS=$*
 # EXE=~/bin/program 
 EXE=../env/bin/python3
 # EDIT THIS: Specify how parameters are given to your executable
-EXE_PARAMS="--time 5 -i $INSTANCE --seed ${SEED} ${CONFIG_PARAMS}"
+# EXE_PARAMS="--time 5 -i $INSTANCE --seed ${SEED} ${CONFIG_PARAMS}"
+EXE_PARAMS="$INSTANCE ${CONFIG_PARAMS}"
 
 if [ ! -x "$(command -v ${EXE})" ]; then
     error "${EXE}: not found or not executable (pwd: $(pwd))"
@@ -73,9 +74,9 @@ fi
 # This is an example of reading a number from the output.  It assumes that the
 # objective value is the first number in the first column of the last line of
 # the output.
-COST=$(tail -n 1 ${STDOUT} | grep -e '^[[:space:]]*[+-]\?[0-9]' | cut -f1)
+# COST=$(tail -n 1 ${STDOUT} | grep -e '^[[:space:]]*[+-]\?[0-9]' | cut -f1)
+COST=$(tail -n 1 ${STDOUT} | grep -e '^[[:space:]]*[+-]\?[0-9]' | cut -d, -f3)
 echo "$COST"
 # Comment the following line if you wish to preserve temporary files
-rm -f "${STDOUT}" "${STDERR}"
+# rm -f "${STDOUT}" "${STDERR}"
 exit 0
-

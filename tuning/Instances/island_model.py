@@ -76,9 +76,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="This is a script designed for running Multipopulation Evolutionary Algorythms. ")
 
     parser.add_argument("-ps", "--population-size", type=int, default=15,\
-        help="defines population size.")
+        help="Defines the population size of a single island.")
     parser.add_argument("--selection",type=str, default="tournament", \
-        help="defines selection type. Possible options: tournament,natural,roulette,sus")
+        help="defines selection type. Possible options: tournament,roulette,sus")
     parser.add_argument("--crossover", type=str, default="uniform",\
         help="uniform,multi_point,blend_alpha")
     parser.add_argument("--crossover-points", type=int, default=1,\
@@ -86,36 +86,46 @@ if __name__ == '__main__':
     parser.add_argument("--mutation", type=str, default="shift_gaussian",\
         help="Possible options: shift_gaussian,replace_uniform")
     parser.add_argument("--populations", type=int, default=100,\
-        help="")
+        help="Define total number of populations across all islands.")
     parser.add_argument("--interval", type=int, default=10,\
         help="")
     parser.add_argument("--topology", type=str, default="fully_connected",\
-        help="Possible options: fully_connected,ring,mesh2d,mesh3d,star")
-    parser.add_argument("--emigration-selection", type=str, default="tournament",\
+        help="Possible options: fully_connected,ring,mesh,star")
+    parser.add_argument("--migration-selection", type=str, default="tournament",\
         help="Possible options: tournament,natural,roulette,sus")
     parser.add_argument("--immigration-selection", type=str, default="tournament",\
-        help="Possible options: tournament,natural,roulette,sus")
+        help="Possible options: tournament,roulette,sus")
     
     args = parser.parse_args()
 
     print("Args:", args)
 
+    pop_size = args.population_size
+
     # TOPOLOGY SELECTION:
     # Set up up the network of connections between islands
-    topology = nx.complete_graph(4)
+
+    topology = nx.complete_graph(pop_size)
     if args.topology == "star":
-        topology = nx.star_graph(5) #has to be an odd number
+        if pop_size%2 == 0:
+            topology = nx.star_graph(pop_size+1) #has to be an odd number, +1 for central island
+        else:
+            topology = nx.star_graph(pop_size)
     if args.topology == "ring":
-        topology = nx.cycle_graph(6)  # has to be an even number
-    if args.topology == "mesh2d":
-        n = 9  # 9 nodes, has to be an odd number
-        m = 20  # 20 edges
+        if pop_size%2 == 0:
+            topology = nx.cycle_graph(pop_size)  # has to be an even number
+        else:
+            topology = nx.cycle_graph(pop_size+1)
+    
+    # mesh 2d and 3d can be produced as the same model, there will be a single 2d representation of it. 
+    if args.topology == "mesh":
+        if pop_size%2 == 0:
+            n = pop_size+1  # has to be an odd number
+        else:
+            n = pop_size
+        m = pop_size*2  # 2xpop_size edges
         topology = nx.gnm_random_graph(n, m, seed=42)
-    if args.topology == "mesh3d":  # TODO
-        n = 9
-        m = 20
-        topology = nx.gnm_random_graph(n, m, seed=42)
-        # pos = nx.spring_layout(topology, dim=3) 
+    
     
     nx.draw(topology)
 
@@ -136,11 +146,26 @@ if __name__ == '__main__':
     if os.environ.get(test_env_var, False) == 'True':
         generations = 2
     else:
-        generations = 1000
-    
+        # generations = 100
+        generations = int(args.populations / pop_size)
     l = 2
-    pop_size = args.population_size
     
+    # SELECTION:
+    chosen_selection = ops.tournament_selection
+    if args.selection == "sus":
+        chosen_selection = ops.sus_selection
+    if args.selection == "roulette":
+        chosen_selection = ops.cyclic_selection
+
+    # MIGRATION SELECTION:
+    selected_migration = ops.tournament_selection
+    if args.migration_selection == "sus":
+        selected_migration = ops.sus_selection
+    if args.migration_selection == "roulette":
+        selected_migration = ops.cyclic_selection
+
+    print("Generations:", generations, " | Populations:", args.populations, " | Population_size:", pop_size)
+
     ea = multi_population_ea(max_generations=generations,
                              num_populations=topology.number_of_nodes(),
                              pop_size=pop_size,
@@ -155,7 +180,7 @@ if __name__ == '__main__':
 
                              # Operator pipeline
                              shared_pipeline=[
-                                 ops.tournament_selection,
+                                 chosen_selection,
                                  ops.clone,
                                  mutate_gaussian(
                                      std=30,
@@ -164,7 +189,7 @@ if __name__ == '__main__':
                                  ops.evaluate,
                                  ops.pool(size=pop_size),
                                  ops.migrate(topology=topology,
-                                             emigrant_selector=ops.tournament_selection,
+                                             emigrant_selector=selected_migration,
                                              replacement_selector=ops.random_selection,
                                              migration_gap=50),
                                  probe.FitnessStatsCSVProbe(stream=sys.stdout,
