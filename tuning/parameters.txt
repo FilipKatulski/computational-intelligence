@@ -33,15 +33,15 @@
 ## mutation        "--mutation="        o  ("none", "very low", "low", "medium", "high", "very high", "all")
 ## #unused         "-u "                c  (1, 2, 10, 20)
 
-population_size "--population-size " i (15, 25)
-# selection "--selection " c (tournament,natural,roulette,sus)
+population_size "--population-size " i (5,15)
+selection "--selection " c (tournament,roulette,sus)
 # crossover "--crossover " c (uniform,multi_point,blend_alpha)
 # crossover_points "--crossover-points " i (1, 5) | crossover == "multi_point"
 # crossover_alpha "--crossover-alpha " r (0, 1) | crossover == "blend_alpha"
 # mutation "--mutation " c (shift_gaussian,replace_uniform)
 # mutation_probability "--mutation-probability " r (0, 0.01)
 # mutation_sigma "--mutation-sigma " r (0, 10) | mutation == " shift_gaussian"
-populations "--populations " c (100, 150, 200, 250)
+populations "--populations " i (100, 200)
 # interval "--interval " o (10,20,40,60,80,100) | populations > 1
 topology "--topology " c (fully_connected,ring,mesh,star) # | populations > 1
 # ms "--migration_size " o (1,2,5,10) | populations > 1

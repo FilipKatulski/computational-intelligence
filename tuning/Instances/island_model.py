@@ -1,11 +1,11 @@
 """
-Provides an island model example.
+Provides an island model.
 """
 import math
 import os
 import sys
 
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 import networkx as nx
 
 import argparse
@@ -13,7 +13,7 @@ import argparse
 from leap_ec import Individual, Representation, context, test_env_var
 from leap_ec import ops, probe
 from leap_ec.algorithm import multi_population_ea
-from leap_ec.real_rep.problems import SchwefelProblem, RastriginProblem, RosenbrockProblem, ShekelProblem
+from leap_ec.real_rep.problems import ShekelProblem
 from leap_ec.real_rep.ops import mutate_gaussian
 from leap_ec.real_rep.initializers import create_real_vector
 
@@ -21,6 +21,7 @@ from leap_ec.real_rep.initializers import create_real_vector
 ##############################
 # viz_plots function
 ##############################
+'''
 def viz_plots(problems, modulo):
     """A convenience method that creates a figure with grid of subplots for
     visualizing the population genotypes and best-of-gen fitness for a number
@@ -33,12 +34,12 @@ def viz_plots(problems, modulo):
     num_rows = min(4, len(problems))
     num_columns = math.ceil(len(problems) / num_rows)
     true_rows = len(problems) / num_columns
-    fig = plt.figure(figsize=(6 * num_columns, 2.5 * true_rows))
-    fig.tight_layout()
+    # fig = plt.figure(figsize=(6 * num_columns, 2.5 * true_rows))
+    #fig.tight_layout()
     genotype_probes = []
     fitness_probes = []
     for i, p in enumerate(problems):
-        plt.subplot(int(true_rows), int(num_columns) * 2, 2 * i + 1) # int() to ensure the values are integers
+        #plt.subplot(int(true_rows), int(num_columns) * 2, 2 * i + 1) # int() to ensure the values are integers
         tp = probe.CartesianPhenotypePlotProbe(
             contours=p,
             xlim=p.bounds,
@@ -47,20 +48,20 @@ def viz_plots(problems, modulo):
             ax=plt.gca())
         genotype_probes.append(tp)
 
-        plt.subplot(true_rows, num_columns * 2, 2 * i + 2)
+        #plt.subplot(true_rows, num_columns * 2, 2 * i + 2)
         fp = probe.FitnessPlotProbe(ylim=(0, 1), modulo=modulo, ax=plt.gca())
         fitness_probes.append(fp)
 
-    plt.subplots_adjust(
-        left=0.05,
-        bottom=0.05,
-        right=0.95,
-        top=0.95,
-        wspace=0.2,
-        hspace=0.3)
+    #plt.subplots_adjust(
+    #    left=0.05,
+    #    bottom=0.05,
+    #    right=0.95,
+    #    top=0.95,
+    #    wspace=0.2,
+    #    hspace=0.3)
 
     return genotype_probes, fitness_probes
-
+'''
 
 def graph_drawer(topology):
     """
@@ -126,15 +127,13 @@ if __name__ == '__main__':
         m = pop_size*2  # 2xpop_size edges
         topology = nx.gnm_random_graph(n, m, seed=42)
     
-    
     nx.draw(topology)
 
     # DEFINE THE PROBLEM HERE:
     problem = ShekelProblem(maximize=False)
 
-    genotype_probes, fitness_probes = viz_plots(
-        [problem] * topology.number_of_nodes(), modulo=10)
-    subpop_probes = list(zip(genotype_probes, fitness_probes))
+    # genotype_probes, fitness_probes = viz_plots([problem] * topology.number_of_nodes(), modulo=10)
+    # subpop_probes = list(zip(genotype_probes, fitness_probes))
 
     def get_island(context):
         """Closure that returns a callback for retrieving the current island
@@ -147,7 +146,7 @@ if __name__ == '__main__':
         generations = 2
     else:
         # generations = 100
-        generations = int(args.populations / pop_size)
+        generations = int(2 * args.populations / pop_size)
     l = 2
     
     # SELECTION:
@@ -195,6 +194,7 @@ if __name__ == '__main__':
                                  probe.FitnessStatsCSVProbe(stream=sys.stdout,
                                         extra_metrics={ 'island': get_island(context) })
                             ],
-                            subpop_pipelines=subpop_probes)
+                            # subpop_pipelines=subpop_probes
+                            )
 
     list(ea)
