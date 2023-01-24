@@ -33,7 +33,7 @@
 ## mutation        "--mutation="        o  ("none", "very low", "low", "medium", "high", "very high", "all")
 ## #unused         "-u "                c  (1, 2, 10, 20)
 
-population_size "--population-size " i (5,15)
+population_size "--population-size " i (5,25)
 selection "--selection " c (tournament,roulette,sus)
 # crossover "--crossover " c (uniform,multi_point,blend_alpha)
 # crossover_points "--crossover-points " i (1, 5) | crossover == "multi_point"

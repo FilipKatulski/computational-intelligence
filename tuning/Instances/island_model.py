@@ -5,7 +5,7 @@ import math
 import os
 import sys
 
-# from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 import networkx as nx
 
 import argparse
@@ -127,7 +127,7 @@ if __name__ == '__main__':
         m = pop_size*2  # 2xpop_size edges
         topology = nx.gnm_random_graph(n, m, seed=42)
     
-    nx.draw(topology)
+    # nx.draw(topology)
 
     # DEFINE THE PROBLEM HERE:
     problem = ShekelProblem(maximize=False)
@@ -198,3 +198,4 @@ if __name__ == '__main__':
                             )
 
     list(ea)
+

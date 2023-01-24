@@ -35,7 +35,7 @@ CONFIG_PARAMS=$*
 
 # EDIT THIS: Path to your executable
 # EXE=~/bin/program 
-EXE=../env/bin/python3
+EXE=/net/people/plgrid/plgfkatul/computational-intelligence/env/bin/python3
 # EDIT THIS: Specify how parameters are given to your executable
 # EXE_PARAMS="--time 5 -i $INSTANCE --seed ${SEED} ${CONFIG_PARAMS}"
 EXE_PARAMS="$INSTANCE ${CONFIG_PARAMS}"
