@@ -106,26 +106,29 @@ if __name__ == '__main__':
     # TOPOLOGY SELECTION:
     # Set up up the network of connections between islands
 
-    topology = nx.complete_graph(pop_size)
-    if args.topology == "star":
-        if pop_size%2 == 0:
-            topology = nx.star_graph(pop_size+1) #has to be an odd number, +1 for central island
-        else:
-            topology = nx.star_graph(pop_size)
-    if args.topology == "ring":
-        if pop_size%2 == 0:
-            topology = nx.cycle_graph(pop_size)  # has to be an even number
-        else:
-            topology = nx.cycle_graph(pop_size+1)
-    
-    # mesh 2d and 3d can be produced as the same model, there will be a single 2d representation of it. 
-    if args.topology == "mesh":
-        if pop_size%2 == 0:
-            n = pop_size+1  # has to be an odd number
-        else:
-            n = pop_size
-        m = pop_size*2  # 2xpop_size edges
-        topology = nx.gnm_random_graph(n, m, seed=42)
+    # For pop_size equal 2 or 1, the graph is always a complete one.
+    if pop_size <= 2:
+        topology = nx.complete_graph(pop_size)
+    else:
+        topology = nx.complete_graph(pop_size)
+        if args.topology == "star":
+            if pop_size%2 == 0:
+                topology = nx.star_graph(pop_size+1) #has to be an odd number, +1 for central island
+            else:
+                topology = nx.star_graph(pop_size)
+        if args.topology == "ring":
+            if pop_size%2 == 0:
+                topology = nx.cycle_graph(pop_size)  # has to be an even number
+            else:
+                topology = nx.cycle_graph(pop_size+1)
+        # mesh 2d and 3d can be produced as the same model, there will be a single 2d representation of it. 
+        if args.topology == "mesh":
+            if pop_size%2 == 0:
+                n = pop_size+1  # has to be an odd number
+            else:
+                n = pop_size
+            m = pop_size*2  # 2xpop_size edges
+            topology = nx.gnm_random_graph(n, m, seed=42)
     
     # nx.draw(topology)
 

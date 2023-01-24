@@ -2,3 +2,4 @@ deap
 leap_ec
 optuna
 pymoo
+networkx
