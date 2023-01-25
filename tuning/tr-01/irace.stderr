@@ -1,0 +1,25 @@
+ scipy-bundle/2021.10-foss-2021b unloaded.
+ intel-compilers/2021.4.0 loaded.
+ impi/2021.4.0-intel-compilers-2021.4.0 loaded.
+ imkl/2021.4.0 loaded.
+ iimpi/2021b loaded.
+ imkl-fftw/2021.4.0-iimpi-2021b loaded.
+ intel/2021b loaded.
+ scipy-bundle/2021.10-intel-2021b loaded.
+
+The following have been reloaded with a version change:
+  1) scipy-bundle/2021.10-foss-2021b => scipy-bundle/2021.10-intel-2021b
+
+ r/4.2.0-foss-2021b unloaded.
+ java/11.0.2 unloaded.
+ java/11.0.2 loaded.
+ r/4.2.0-foss-2021b loaded.
+ python/3.9.6-gcccore-11.2.0 unloaded.
+ python/3.9.6-gcccore-11.2.0 loaded.
+ scipy-bundle/2021.10-intel-2021b unloaded.
+ scipy-bundle/2021.10-foss-2021b loaded.
+ networkx/2.6.3-foss-2021b loaded.
+
+The following have been reloaded with a version change:
+  1) scipy-bundle/2021.10-intel-2021b => scipy-bundle/2021.10-foss-2021b
+

@@ -5,7 +5,7 @@ import math
 import os
 import sys
 
-# from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 import networkx as nx
 
 import argparse
@@ -76,6 +76,8 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description="This is a script designed for running Multipopulation Evolutionary Algorythms. ")
 
+    parser.add_argument("-as", "--archipelago-size", type=int, default=20,\
+        help="Defines total number of islands in the archipelago. ")
     parser.add_argument("-ps", "--population-size", type=int, default=15,\
         help="Defines the population size of a single island.")
     parser.add_argument("--selection",type=str, default="tournament", \
@@ -102,32 +104,35 @@ if __name__ == '__main__':
     print("Args:", args)
 
     pop_size = args.population_size
-
+    archipelago_size = args.archipelago_size
     # TOPOLOGY SELECTION:
     # Set up up the network of connections between islands
 
-    topology = nx.complete_graph(pop_size)
-    if args.topology == "star":
-        if pop_size%2 == 0:
-            topology = nx.star_graph(pop_size+1) #has to be an odd number, +1 for central island
-        else:
-            topology = nx.star_graph(pop_size)
-    if args.topology == "ring":
-        if pop_size%2 == 0:
-            topology = nx.cycle_graph(pop_size)  # has to be an even number
-        else:
-            topology = nx.cycle_graph(pop_size+1)
+    # For archipelago_size equal to 3, 2 or 1 the graph is always a complete one.
+    if archipelago_size <= 3:
+        topology = nx.complete_graph(archipelago_size)
+    else:
+        topology = nx.complete_graph(archipelago_size)
+        if args.topology == "star":
+            if archipelago_size%2 == 0:
+                topology = nx.star_graph(archipelago_size+1) #has to be an odd number, +1 for central island
+            else:
+                topology = nx.star_graph(archipelago_size)
+        if args.topology == "ring":
+            if archipelago_size%2 == 0:
+                topology = nx.cycle_graph(archipelago_size)  # has to be an even number
+            else:
+                topology = nx.cycle_graph(archipelago_size+1)
+        # mesh 2d and 3d can be produced as the same model, there will be a single 2d representation of it. 
+        if args.topology == "mesh":
+            if archipelago_size%2 == 0:
+                n = archipelago_size+1  # has to be an odd number
+            else:
+                n = archipelago_size
+            m = archipelago_size*2  # 2x archipelago_size edges
+            topology = nx.gnm_random_graph(n, m, seed=42)
     
-    # mesh 2d and 3d can be produced as the same model, there will be a single 2d representation of it. 
-    if args.topology == "mesh":
-        if pop_size%2 == 0:
-            n = pop_size+1  # has to be an odd number
-        else:
-            n = pop_size
-        m = pop_size*2  # 2xpop_size edges
-        topology = nx.gnm_random_graph(n, m, seed=42)
-    
-    nx.draw(topology)
+    # nx.draw(topology)
 
     # DEFINE THE PROBLEM HERE:
     problem = ShekelProblem(maximize=False)
@@ -146,7 +151,7 @@ if __name__ == '__main__':
         generations = 2
     else:
         # generations = 100
-        generations = int(2 * args.populations / pop_size)
+        generations = int(2 * args.populations / archipelago_size) + 10 
     l = 2
     
     # SELECTION:
@@ -163,11 +168,12 @@ if __name__ == '__main__':
     if args.migration_selection == "roulette":
         selected_migration = ops.cyclic_selection
 
-    print("Generations:", generations, " | Populations:", args.populations, " | Population_size:", pop_size)
+    print("Generations:", generations, " | Populations:", args.populations, " | Archipelago_size:", archipelago_size)
 
     ea = multi_population_ea(max_generations=generations,
                              num_populations=topology.number_of_nodes(),
-                             pop_size=pop_size,
+                             # pop_size= pop_size,
+                             pop_size=int(args.populations / archipelago_size) + 1,
                              problem=problem,  # Fitness function
 
                              # Representation
@@ -198,3 +204,4 @@ if __name__ == '__main__':
                             )
 
     list(ea)
+

@@ -1,0 +1,88 @@
+ --archipelago-size 2 --selection tournament --populations 314 --topology mesh --migration-selection tournament
+ --archipelago-size 2 --selection tournament --populations 272 --topology star --migration-selection roulette
+ --archipelago-size 2 --selection tournament --populations 236 --topology ring --migration-selection sus
+ --archipelago-size 2 --selection tournament --populations 399 --topology mesh --migration-selection tournament
+ --archipelago-size 2 --selection tournament --populations 495 --topology mesh --migration-selection sus
+ --archipelago-size 2 --selection tournament --populations 434 --topology star --migration-selection tournament
+ # 
+ --archipelago-size 3 --selection tournament --populations 464 --topology fully_connected --migration-selection tournament
+ --archipelago-size 3 --selection tournament --populations 438 --topology star --migration-selection tournament
+ --archipelago-size 3 --selection tournament --populations 394 --topology mesh --migration-selection tournament
+ --archipelago-size 3 --selection tournament --populations 293 --topology ring --migration-selection sus
+ --archipelago-size 3 --selection tournament --populations 352 --topology star --migration-selection sus
+ --archipelago-size 3 --selection tournament --populations 365 --topology mesh --migration-selection tournament
+ --archipelago-size 3 --selection tournament --populations 322 --topology star --migration-selection roulette
+ #
+ --archipelago-size 5 --selection tournament --populations 312 --topology ring --migration-selection tournament
+ --archipelago-size 5 --selection tournament --populations 285 --topology mesh --migration-selection roulette
+ --archipelago-size 5 --selection tournament --populations 268 --topology fully_connected --migration-selection sus
+ --archipelago-size 5 --selection tournament --populations 398 --topology ring --migration-selection sus
+ --archipelago-size 5 --selection tournament --populations 242 --topology fully_connected --migration-selection sus
+ --archipelago-size 5 --selection tournament --populations 463 --topology fully_connected --migration-selection tournament
+ --archipelago-size 5 --selection tournament --populations 316 --topology fully_connected --migration-selection sus
+ --archipelago-size 5 --selection tournament --populations 317 --topology ring --migration-selection roulette
+ --archipelago-size 5 --selection tournament --populations 437 --topology ring --migration-selection roulette
+ --archipelago-size 5 --selection tournament --populations 439 --topology ring --migration-selection sus
+ --archipelago-size 5 --selection tournament --populations 394 --topology fully_connected --migration-selection sus
+ --archipelago-size 5 --selection tournament --populations 477 --topology star --migration-selection tournament
+ #
+ --archipelago-size 10 --selection tournament --populations 442 --topology mesh --migration-selection sus
+ --archipelago-size 10 --selection tournament --populations 410 --topology mesh --migration-selection sus
+ --archipelago-size 10 --selection tournament --populations 206 --topology fully_connected --migration-selection tournament
+ --archipelago-size 10 --selection tournament --populations 388 --topology star --migration-selection sus
+ --archipelago-size 10 --selection tournament --populations 387 --topology fully_connected --migration-selection sus
+ --archipelago-size 10 --selection tournament --populations 397 --topology star --migration-selection roulette
+ --archipelago-size 10 --selection tournament --populations 471 --topology ring --migration-selection roulette
+ --archipelago-size 10 --selection tournament --populations 468 --topology ring --migration-selection sus
+ --archipelago-size 10 --selection tournament --populations 408 --topology star --migration-selection roulette
+ --archipelago-size 10 --selection tournament --populations 459 --topology fully_connected --migration-selection tournament
+ --archipelago-size 10 --selection tournament --populations 440 --topology fully_connected --migration-selection sus
+ --archipelago-size 10 --selection tournament --populations 234 --topology ring --migration-selection sus
+ --archipelago-size 10 --selection tournament --populations 282 --topology fully_connected --migration-selection sus
+ # 
+ --archipelago-size 20 --selection tournament --populations 314 --topology ring --migration-selection tournament
+ --archipelago-size 20 --selection tournament --populations 447 --topology fully_connected --migration-selection sus
+ --archipelago-size 20 --selection tournament --populations 216 --topology ring --migration-selection roulette
+ --archipelago-size 20 --selection tournament --populations 259 --topology ring --migration-selection roulette
+ --archipelago-size 20 --selection tournament --populations 465 --topology star --migration-selection roulette
+ --archipelago-size 20 --selection tournament --populations 289 --topology ring --migration-selection roulette
+ --archipelago-size 20 --selection tournament --populations 256 --topology fully_connected --migration-selection tournament
+ --archipelago-size 20 --selection tournament --populations 393 --topology star --migration-selection roulette
+ --archipelago-size 20 --selection tournament --populations 355 --topology star --migration-selection roulette
+ --archipelago-size 20 --selection tournament --populations 349 --topology star --migration-selection sus
+ --archipelago-size 20 --selection tournament --populations 452 --topology star --migration-selection roulette
+ --archipelago-size 20 --selection tournament --populations 485 --topology ring --migration-selection sus
+ --archipelago-size 20 --selection tournament --populations 416 --topology ring --migration-selection sus
+ --archipelago-size 20 --selection tournament --populations 500 --topology star --migration-selection sus
+ #
+ --archipelago-size 40 --selection tournament --populations 223 --topology star --migration-selection sus
+ --archipelago-size 40 --selection tournament --populations 290 --topology ring --migration-selection tournament
+ --archipelago-size 40 --selection tournament --populations 481 --topology fully_connected --migration-selection tournament
+ --archipelago-size 40 --selection tournament --populations 499 --topology fully_connected --migration-selection tournament
+ --archipelago-size 40 --selection tournament --populations 478 --topology star --migration-selection sus
+ --archipelago-size 40 --selection tournament --populations 310 --topology fully_connected --migration-selection sus
+ --archipelago-size 40 --selection tournament --populations 316 --topology fully_connected --migration-selection sus
+ #
+ --archipelago-size 60 --selection tournament --populations 373 --topology ring --migration-selection sus
+ --archipelago-size 60 --selection tournament --populations 266 --topology ring --migration-selection roulette
+ --archipelago-size 60 --selection tournament --populations 395 --topology star --migration-selection tournament
+ --archipelago-size 60 --selection tournament --populations 363 --topology fully_connected --migration-selection sus
+ --archipelago-size 60 --selection tournament --populations 431 --topology star --migration-selection roulette
+ --archipelago-size 60 --selection tournament --populations 359 --topology star --migration-selection sus
+ #
+ --archipelago-size 80 --selection tournament --populations 249 --topology ring --migration-selection roulette
+ --archipelago-size 80 --selection tournament --populations 459 --topology star --migration-selection tournament
+ --archipelago-size 80 --selection tournament --populations 435 --topology star --migration-selection sus
+ --archipelago-size 80 --selection tournament --populations 429 --topology star --migration-selection tournament
+ --archipelago-size 80 --selection tournament --populations 336 --topology star --migration-selection tournament
+ --archipelago-size 80 --selection tournament --populations 351 --topology fully_connected --migration-selection tournament
+ #
+ --archipelago-size 100 --selection tournament --populations 334 --topology star --migration-selection tournament
+ --archipelago-size 100 --selection tournament --populations 489 --topology ring --migration-selection tournament
+ --archipelago-size 100 --selection tournament --populations 354 --topology ring --migration-selection sus
+ --archipelago-size 100 --selection tournament --populations 364 --topology ring --migration-selection sus
+ --archipelago-size 100 --selection tournament --populations 392 --topology fully_connected --migration-selection tournament
+ --archipelago-size 100 --selection tournament --populations 389 --topology ring --migration-selection roulette
+ --archipelago-size 100 --selection tournament --populations 250 --topology star --migration-selection tournament
+ --archipelago-size 100 --selection tournament --populations 283 --topology star --migration-selection roulette
+ --archipelago-size 100 --selection tournament --populations 276 --topology star --migration-selection roulette
