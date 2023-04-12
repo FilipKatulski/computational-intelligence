@@ -1,0 +1,346 @@
+#------------------------------------------------------------------------------
+# irace: An implementation in R of (Elitist) Iterated Racing
+# Version: 3.5.6863679
+# Copyright (C) 2010-2020
+# Manuel Lopez-Ibanez     <manuel.lopez-ibanez@manchester.ac.uk>
+# Jeremie Dubois-Lacoste  
+# Leslie Perez Caceres    <leslie.perez.caceres@ulb.ac.be>
+#
+# This is free software, and you are welcome to redistribute it under certain
+# conditions.  See the GNU General Public License for details. There is NO
+# WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# irace builds upon previous code from the race package:
+#     race: Racing methods for the selection of the best
+#     Copyright (C) 2003 Mauro Birattari
+#------------------------------------------------------------------------------
+# installed at: /net/people/plgrid/plgfkatul/R/irace
+# called with: --exec-dir=target-runner-20 --seed 1234586
+== irace == WARNING: A default scenario file '/net/people/plgrid/plgfkatul/repos/computational-intelligence/tuning/scenario.txt' has been found and will be read.
+# 2023-01-25 00:48:03 CET: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 4
+# minNbSurvival: 4
+# nbParameters: 5
+# seed: 1234586
+# confidence level: 0.95
+# budget: 15000
+# mu: 5
+# deterministic: FALSE
+
+# 2023-01-25 00:48:03 CET: Iteration 1 of 4
+# experimentsUsedSoFar: 0
+# remainingBudget: 15000
+# currentBudget: 3750
+# nbConfigurations: 625
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|        625|        182|     256.7789544|        625|00:11:24|   NA|  NA|    NA|
+|x|          2|        625|        102|     314.5041187|       1250|00:11:21|+0.38|0.69|0.6342|
+|x|          3|        625|        346|     374.5468832|       1875|00:11:22|+0.44|0.62|0.5968|
+|x|          4|        625|         13|     380.9912701|       2500|00:11:21|+0.45|0.59|0.5824|
+|-|          5|        179|         96|     392.4686707|       3125|00:11:21|-0.10|0.12|1.0781|
+|=|          6|        179|        346|     386.5704147|       3304|00:03:33|-0.06|0.12|1.0374|
+|=|          7|        179|        472|     385.7343904|       3483|00:03:32|-0.03|0.11|1.0154|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         472    mean value:      385.7343904
+Description of the best-so-far configuration:
+    .ID. archipelago_size  selection populations        topology migration_selection .PARENT.
+472  472               20 tournament         273 fully_connected            roulette       NA
+
+# 2023-01-25 01:52:01 CET: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    archipelago_size  selection populations        topology migration_selection
+472               20 tournament         273 fully_connected            roulette
+524                2 tournament         215 fully_connected                 sus
+346                3 tournament         464            ring            roulette
+13                10 tournament         343 fully_connected          tournament
+# 2023-01-25 01:52:01 CET: Iteration 2 of 4
+# experimentsUsedSoFar: 3483
+# remainingBudget: 11517
+# currentBudget: 3839
+# nbConfigurations: 483
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          8|        483|        871|     286.4461064|        483|00:07:18|   NA|  NA|    NA|
+|x|          5|        483|        472|     331.1150596|        962|00:07:13|+0.49|0.75|0.6009|
+|x|          1|        483|        745|     348.2792170|       1441|00:07:13|+0.50|0.66|0.6184|
+|x|          2|        483|        838|     367.4140049|       1920|00:07:13|+0.49|0.62|0.6133|
+|-|          6|        167|        472|     370.7749837|       2399|00:07:14|-0.11|0.11|1.0883|
+|=|          7|        167|        472|     375.6591063|       2562|00:02:32|-0.07|0.11|1.0495|
+|=|          4|        167|        472|     381.6230728|       2725|00:02:32|-0.04|0.11|1.0217|
+|=|          3|        167|        472|     377.0032848|       2888|00:02:32|-0.03|0.10|1.0092|
+|=|          9|        167|        472|     378.2109365|       3055|00:02:35|-0.01|0.10|0.9995|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         472    mean value:      378.2109365
+Description of the best-so-far configuration:
+    .ID. archipelago_size  selection populations        topology migration_selection .PARENT.
+472  472               20 tournament         273 fully_connected            roulette       NA
+
+# 2023-01-25 02:38:28 CET: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    archipelago_size  selection populations        topology migration_selection
+472               20 tournament         273 fully_connected            roulette
+825               10 tournament         234            ring                 sus
+755                3 tournament         455            ring            roulette
+346                3 tournament         464            ring            roulette
+# 2023-01-25 02:38:28 CET: Iteration 3 of 4
+# experimentsUsedSoFar: 6538
+# remainingBudget: 8462
+# currentBudget: 4231
+# nbConfigurations: 426
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         10|        426|       1368|     289.3824554|        426|00:06:48|   NA|  NA|    NA|
+|x|          6|        426|       1291|     363.2992495|        848|00:06:44|+0.47|0.73|0.6831|
+|x|          5|        426|        472|     352.1954575|       1270|00:06:45|+0.47|0.65|0.6515|
+|x|          1|        426|        472|     370.8532167|       1692|00:06:44|+0.48|0.61|0.6473|
+|-|          2|        164|       1399|     363.9328222|       2114|00:06:45|-0.14|0.09|1.1144|
+|=|          7|        164|       1188|     380.8360980|       2274|00:02:44|-0.09|0.09|1.0804|
+|=|          3|        164|       1188|     380.0826303|       2434|00:02:44|-0.07|0.09|1.0553|
+|=|          4|        164|        825|     383.3892325|       2594|00:02:44|-0.05|0.08|1.0402|
+|=|          8|        164|        825|     378.6280156|       2754|00:02:44|-0.04|0.08|1.0246|
+|=|          9|        164|        472|     378.5454617|       2914|00:02:44|-0.02|0.08|1.0075|
+|=|         11|        164|        472|     384.0264918|       3078|00:02:50|-0.02|0.07|1.0113|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         472    mean value:      384.0264918
+Description of the best-so-far configuration:
+    .ID. archipelago_size  selection populations        topology migration_selection .PARENT.
+472  472               20 tournament         273 fully_connected            roulette       NA
+
+# 2023-01-25 03:28:50 CET: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     archipelago_size  selection populations        topology migration_selection
+472                20 tournament         273 fully_connected            roulette
+1180               10 tournament         301 fully_connected            roulette
+825                10 tournament         234            ring                 sus
+1148                3 tournament         403            ring            roulette
+# 2023-01-25 03:28:50 CET: Iteration 4 of 4
+# experimentsUsedSoFar: 9616
+# remainingBudget: 5384
+# currentBudget: 5384
+# nbConfigurations: 452
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         12|        452|       1732|     254.4765273|        452|00:07:00|   NA|  NA|    NA|
+|x|         10|        452|       1901|     313.0333975|        900|00:06:57|+0.40|0.70|0.7327|
+|x|          9|        452|       1861|     346.3271997|       1348|00:07:01|+0.36|0.58|0.7383|
+|x|          5|        452|       1760|     371.1429840|       1796|00:06:57|+0.39|0.54|0.7084|
+|-|          6|        170|       1811|     360.4282998|       2244|00:06:56|-0.13|0.09|1.1106|
+|=|          7|        170|       1811|     363.9765105|       2410|00:02:44|-0.09|0.09|1.0661|
+|=|          1|        170|       1811|     366.8355184|       2576|00:02:44|-0.06|0.09|1.0448|
+|=|          4|        170|       1811|     373.8239082|       2742|00:02:44|-0.04|0.09|1.0240|
+|=|          2|        170|       1836|     387.7110907|       2908|00:02:44|-0.03|0.09|1.0171|
+|=|          8|        170|        472|     388.2648394|       3074|00:02:45|-0.02|0.08|1.0145|
+|=|         11|        170|        472|     392.8622897|       3240|00:02:44|-0.03|0.06|1.0209|
+|=|          3|        170|        472|     388.8458296|       3406|00:02:44|-0.02|0.07|1.0075|
+|=|         13|        170|        472|     392.4375616|       3576|00:02:49|-0.01|0.07|1.0043|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         472    mean value:      392.4375616
+Description of the best-so-far configuration:
+    .ID. archipelago_size  selection populations        topology migration_selection .PARENT.
+472  472               20 tournament         273 fully_connected            roulette       NA
+
+# 2023-01-25 04:25:48 CET: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     archipelago_size  selection populations        topology migration_selection
+472                20 tournament         273 fully_connected            roulette
+1546               10 tournament         282 fully_connected                 sus
+825                10 tournament         234            ring                 sus
+1883                2 tournament         470            mesh            roulette
+# 2023-01-25 04:25:48 CET: Iteration 5 of 5
+# experimentsUsedSoFar: 13192
+# remainingBudget: 1808
+# currentBudget: 1808
+# nbConfigurations: 132
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         14|        132|       2018|     297.9303404|        132|00:02:07|   NA|  NA|    NA|
+|x|          3|        132|       2058|     345.6966697|        260|00:02:04|+0.34|0.67|0.7868|
+|x|          1|        132|       2042|     382.2624335|        388|00:02:04|+0.33|0.55|0.7555|
+|x|          9|        132|       1976|     362.8854351|        516|00:02:04|+0.31|0.48|0.7465|
+|-|         11|         64|       1976|     366.9655121|        644|00:02:06|-0.11|0.11|1.0828|
+|=|         10|         64|       1976|     358.5436716|        704|00:01:01|-0.07|0.11|1.0469|
+|=|         13|         64|       1976|     361.6203550|        764|00:01:01|-0.05|0.10|1.0283|
+|=|          4|         64|       1976|     364.6618901|        824|00:01:01|-0.02|0.11|0.9978|
+|=|         12|         64|       1976|     371.4939152|        884|00:01:01|-0.01|0.10|0.9930|
+|=|          7|         64|       1976|     380.0026041|        944|00:01:01|+0.00|0.10|0.9829|
+|=|          6|         64|       1976|     378.0688782|       1004|00:01:01|+0.01|0.10|0.9720|
+|=|          5|         64|       1976|     381.4576420|       1064|00:01:01|+0.01|0.09|0.9752|
+|=|          2|         64|       1976|     384.0868986|       1124|00:01:01|+0.02|0.09|0.9675|
+|=|          8|         64|       1976|     385.7643998|       1184|00:01:01|+0.02|0.09|0.9602|
+|=|         15|         64|        825|     394.6571443|       1248|00:01:06|+0.02|0.08|0.9657|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         825    mean value:      394.6571443
+Description of the best-so-far configuration:
+    .ID. archipelago_size  selection populations topology migration_selection .PARENT.
+825  825               10 tournament         234     ring                 sus      472
+
+# 2023-01-25 04:46:36 CET: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     archipelago_size  selection populations        topology migration_selection
+825                10 tournament         234            ring                 sus
+1976               40 tournament         310 fully_connected                 sus
+1546               10 tournament         282 fully_connected                 sus
+1883                2 tournament         470            mesh            roulette
+# 2023-01-25 04:46:36 CET: Iteration 6 of 6
+# experimentsUsedSoFar: 14440
+# remainingBudget: 560
+# currentBudget: 560
+# nbConfigurations: 38
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         16|         38|       1546|     275.3034282|         38|00:00:41|   NA|  NA|    NA|
+|x|          4|         38|       2112|     343.4783170|         72|00:00:37|+0.41|0.71|0.5089|
+|x|          2|         38|       2112|     332.3056664|        106|00:00:37|+0.30|0.53|0.6892|
+|x|         15|         38|       2112|     350.0326351|        140|00:00:37|+0.24|0.43|0.7403|
+|-|         11|         17|       2112|     356.7199591|        174|00:00:37|-0.07|0.14|0.9856|
+|=|          5|         17|       1546|     358.6754850|        187|00:00:15|-0.01|0.16|0.9391|
+|=|          1|         17|       1546|     357.9832407|        200|00:00:15|+0.04|0.18|0.8995|
+|=|          3|         17|       1546|     357.5948283|        213|00:00:16|+0.04|0.16|0.9072|
+|=|          9|         17|       1546|     364.4440652|        226|00:00:15|+0.03|0.14|0.9200|
+|=|         12|         17|       1546|     375.1893441|        239|00:00:16|-0.00|0.10|0.9445|
+|=|          6|         17|       1546|     377.1428993|        252|00:00:15|+0.01|0.10|0.9404|
+|=|          7|         17|       1546|     379.4971877|        265|00:00:16|+0.02|0.10|0.9394|
+|=|         14|         17|       1546|     384.3067236|        278|00:00:15|+0.02|0.09|0.9354|
+|=|          8|         17|       1546|     387.5537809|        291|00:00:15|+0.00|0.08|0.9447|
+|=|         13|         17|       1546|     387.8696637|        304|00:00:15|+0.00|0.07|0.9487|
+|=|         10|         17|       1546|     391.7661489|        317|00:00:16|+0.00|0.07|0.9445|
+|=|         17|         17|        825|     395.0763543|        334|00:00:18|+0.01|0.06|0.9397|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         825    mean value:      395.0763543
+Description of the best-so-far configuration:
+    .ID. archipelago_size  selection populations topology migration_selection .PARENT.
+825  825               10 tournament         234     ring                 sus      472
+
+# 2023-01-25 04:53:00 CET: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     archipelago_size  selection populations        topology migration_selection
+825                10 tournament         234            ring                 sus
+1546               10 tournament         282 fully_connected                 sus
+1976               40 tournament         310 fully_connected                 sus
+2118               40 tournament         316 fully_connected                 sus
+# 2023-01-25 04:53:00 CET: Iteration 7 of 7
+# experimentsUsedSoFar: 14774
+# remainingBudget: 226
+# currentBudget: 226
+# nbConfigurations: 16
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         18|         16|       2147|     303.9302275|         16|00:00:18|   NA|  NA|    NA|
+|x|         11|         16|       2147|     289.4994144|         28|00:00:14|+0.58|0.79|0.2888|
+|x|          2|         16|       2142|     373.7287326|         40|00:00:14|-0.11|0.26|1.0358|
+|x|          7|         16|       2142|     380.6345839|         52|00:00:14|-0.09|0.18|1.0135|
+|=|         14|         16|       2141|     402.6919216|         64|00:00:14|-0.09|0.13|1.0083|
+|=|          3|         16|       2138|     401.7823593|         76|00:00:14|-0.07|0.11|0.9871|
+|=|          4|         16|       1546|     398.8086123|         88|00:00:14|-0.01|0.13|0.9349|
+|=|          8|         16|        825|     397.3095460|        100|00:00:14|-0.01|0.12|0.9362|
+|=|         17|         16|       1976|     384.9415577|        112|00:00:14|+0.02|0.13|0.9093|
+|=|          6|         16|        825|     382.0299101|        124|00:00:14|+0.04|0.13|0.8841|
+|=|          1|         16|        825|     384.2772189|        136|00:00:15|+0.04|0.13|0.8840|
+|=|         16|         16|        825|     388.0360096|        148|00:00:14|+0.05|0.13|0.8756|
+|-|         13|         11|       1976|     390.1916306|        160|00:00:15|-0.02|0.06|0.9257|
+|=|          5|         11|       1546|     386.5060714|        167|00:00:09|-0.00|0.07|0.9097|
+|=|          9|         11|       1546|     388.6881973|        174|00:00:09|+0.02|0.09|0.8930|
+|=|         10|         11|       1976|     386.9162884|        181|00:00:09|+0.04|0.10|0.8733|
+|=|         12|         11|       1976|     389.2241606|        188|00:00:09|+0.04|0.10|0.8706|
+|=|         15|         11|       1976|     394.8147996|        195|00:00:09|+0.03|0.09|0.8858|
+|=|         19|         11|        825|     395.8099100|        206|00:00:14|+0.02|0.07|0.8926|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         825    mean value:      395.8099100
+Description of the best-so-far configuration:
+    .ID. archipelago_size  selection populations topology migration_selection .PARENT.
+825  825               10 tournament         234     ring                 sus      472
+
+# 2023-01-25 04:57:16 CET: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     archipelago_size  selection populations        topology migration_selection
+825                10 tournament         234            ring                 sus
+1976               40 tournament         310 fully_connected                 sus
+1546               10 tournament         282 fully_connected                 sus
+2118               40 tournament         316 fully_connected                 sus
+# 2023-01-25 04:57:16 CET: Stopped because there is not enough budget left to race more than the minimum (4)
+# You may either increase the budget or set 'minNbSurvival' to a lower value
+# Iteration: 8
+# nbIterations: 8
+# experimentsUsedSoFar: 14980
+# timeUsed: 0
+# remainingBudget: 20
+# currentBudget: 20
+# number of elites: 4
+# nbConfigurations: 4
+# Total CPU user time: 55910.23, CPU sys time: 1897.322, Wall-clock time: 14952.62
+# Best configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     archipelago_size  selection populations        topology migration_selection
+825                10 tournament         234            ring                 sus
+1976               40 tournament         310 fully_connected                 sus
+1546               10 tournament         282 fully_connected                 sus
+2118               40 tournament         316 fully_connected                 sus
+# Best configurations as commandlines (first number is the configuration ID; same order as above):
+825   --archipelago-size 10 --selection tournament --populations 234 --topology ring --migration-selection sus
+1976  --archipelago-size 40 --selection tournament --populations 310 --topology fully_connected --migration-selection sus
+1546  --archipelago-size 10 --selection tournament --populations 282 --topology fully_connected --migration-selection sus
+2118  --archipelago-size 40 --selection tournament --populations 316 --topology fully_connected --migration-selection sus
+
+
+# Testing of elite configurations: 1 
+# Testing iteration configurations: FALSE 
+# 2023-01-25 04:57:16 CET: No test instances, skip testing
